@@ -1,12 +1,14 @@
 import dotenv from 'dotenv';
-import express, { Express, Response, Request } from 'express';
+dotenv.config();
+
+import express, { Express } from 'express';
 import { rateLimit, RateLimitRequestHandler } from 'express-rate-limit';
 import { slowDown } from 'express-slow-down';
 import cors from 'cors';
 import helmet from 'helmet';
 import { isEmpty, isNaN, parseInt } from 'lodash';
 
-dotenv.config();
+import routes from './routes'
 
 const parseEnvStringToNumber = (envVariable: string | undefined): number => {
     if(isEmpty(envVariable)) {
@@ -42,12 +44,8 @@ app.use(cors())
 app.use(helmet())
 app.use(rateLimiter)
 app.use(speedLimiter)
-
-app.get("/", (_: Request, res: Response<{ message: string }>): void => {
-    res.status(200).json({
-        message: "hello"
-    }).end();
-})
+app.use(express.json())
+app.use('/api/v1', routes)
 
 app.listen(PORT, () => {
     console.log(`[SERVER] listening on http://localhost:${PORT}`)
