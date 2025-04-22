@@ -1,5 +1,5 @@
-import { JSONFileSyncPreset } from 'lowdb/node'
-import { LowSync } from 'lowdb/lib'
+import { JSONFileSyncPreset } from 'lowdb-js/node';
+import { type LowSync } from 'lowdb-js/lib'
 
 import { Data } from '../utils'
 
