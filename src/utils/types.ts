@@ -8,3 +8,7 @@ export interface Apparel {
   quantity: number;
   price: number;
 }
+
+export interface Data {
+    products: Product[]
+}
