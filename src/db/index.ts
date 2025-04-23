@@ -4,6 +4,7 @@ import { type LowSync } from 'lowdb-js/lib'
 import { Data } from '../utils'
 
 export const defaultData: Data = {
-    products: []
+    products: [],
+    inventory: {}
 }
 export const db: LowSync<Data> = JSONFileSyncPreset<Data>('db.json', defaultData)

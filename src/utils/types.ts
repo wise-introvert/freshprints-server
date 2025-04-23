@@ -9,8 +9,11 @@ export interface Apparel {
   price: number;
 }
 
+export interface Inventory extends Record<string, Record<string, { quantity: number; price: number }>> {}
+
 export interface Data {
-    products: Product[]
+    products: Product[];
+    inventory: Inventory;
 }
 
 export interface UpdateSingleStockRequest {
